@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beyond the Quotation Marks – Creative Writing Interactive Workbook</title>
+<style>
+:root{--bg:#eef0fb;--card:#fff;--ink:#1d1b2e;--mut:#5b5873;--pri:#5f4b9b;--on:#fff;--acc:#f8c9c4;--ok:#0f6b4a;--okb:#d8f3e6;--bad:#a8231b;--badb:#fde2df;--line:#d3cfea;--soft:#f4f2fc;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17152a;--card:#221f3b;--ink:#ece9fa;--mut:#a9a5c6;--pri:#a592e6;--on:#17152a;--acc:#4a3350;--ok:#6fe0b0;--okb:#143a2c;--bad:#ff9a93;--badb:#4a1f1d;--line:#3a3660;--soft:#2b2749;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17152a;--card:#221f3b;--ink:#ece9fa;--mut:#a9a5c6;--pri:#a592e6;--on:#17152a;--acc:#4a3350;--ok:#6fe0b0;--okb:#143a2c;--bad:#ff9a93;--badb:#4a1f1d;--line:#3a3660;--soft:#2b2749;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--pri);z-index:10}
+header{background:var(--pri);color:var(--on);padding:22px 18px 14px;text-align:center}
+header h1{margin:0;font-size:1.7rem}header p{margin:4px 0 0;opacity:.9;font-size:.9rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--pri);display:flex;gap:6px;padding:0 10px 10px;overflow-x:auto;justify-content:center}
+nav button{flex:none;border:0;border-radius:99px;padding:8px 16px;font:600 .9rem inherit;font-family:inherit;background:transparent;color:var(--on);cursor:pointer;opacity:.8}
+nav button.on{background:var(--card);color:var(--pri);opacity:1}
+main{max-width:780px;margin:0 auto;padding:16px 14px 60px}
+section{display:none}section.on{display:block}
+.card{scroll-margin-top:70px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:0 0 14px}
+h2{margin:6px 0 10px;color:var(--pri)}h3{margin:0 0 8px;color:var(--pri)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.chip{display:inline-block;background:var(--acc);border-radius:99px;padding:2px 12px;margin:2px;font-weight:600;font-size:.9rem}
+.ex{background:var(--soft);border-left:4px solid var(--pri);padding:8px 12px;border-radius:8px;margin:8px 0;white-space:pre-wrap}
+.ctx{background:var(--soft);border-radius:10px;padding:8px 12px;margin:6px 0;white-space:pre-wrap}
+.q{border-top:1px dashed var(--line);padding:12px 0}.q:first-of-type{border:0}
+.opts{display:grid;gap:6px}
+.opt{text-align:left;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer}
+.opt:hover{border-color:var(--pri)}
+.opt.ok{background:var(--okb);border-color:var(--ok)}.opt.no{background:var(--badb);border-color:var(--bad)}
+.fb{margin-top:6px;font-weight:600;min-height:1em}.fb.ok{color:var(--ok)}.fb.no{color:var(--bad)}
+.score{position:sticky;bottom:8px;background:var(--pri);color:var(--on);border-radius:99px;padding:6px 16px;text-align:center;font-weight:700;margin-top:10px}
+input[type=text],textarea,select{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:10px;padding:8px 10px;width:100%}
+input.in{width:auto;min-width:40%;display:inline-block;padding:4px 8px}
+textarea{min-height:230px;resize:vertical}
+.btn{font:600 .95rem inherit;font-family:inherit;background:var(--pri);color:var(--on);border:0;border-radius:10px;padding:8px 16px;cursor:pointer;margin:6px 6px 0 0}
+.btn.alt{background:var(--soft);color:var(--pri);border:2px solid var(--line)}
+.stat{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.stat span{background:var(--soft);border-radius:99px;padding:3px 12px;font-weight:600;font-size:.9rem}
+.stat span.g{background:var(--okb);color:var(--ok)}.stat span.b{background:var(--badb);color:var(--bad)}
+.line{margin:10px 0;line-height:2.1}
+.hide{display:none}
+ul{margin:6px 0;padding-left:20px}
+table.sc{width:100%;border-collapse:collapse;margin:8px 0}table.sc td,table.sc th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top;font-size:.92rem}table.sc th{background:var(--soft);color:var(--pri)}
+.ref{padding-left:2em;text-indent:-2em;margin:10px 0}.note{color:var(--mut);font-size:.88rem}
+@media print{nav,.btn,.score,body::before{display:none!important}header{background:none;color:#000}}
+.idbox{text-align:left;white-space:normal}.idbox label{display:block;font-weight:600;margin:8px 0 4px}
+.cover{text-align:center}.cover h2{font-size:1.8rem}.cover table{margin:12px auto;text-align:left}
+</style></head><body>
+<header><h1>Beyond the Quotation Marks</h1><p>An interactive workbook on writing dialogue · Creative Writing</p><p id="who" class="hide" style="font-weight:700"></p></header>
+<nav id="nav"></nav>
+<main>
+
+<section id="cover" class="on">
+<div class="card cover"><p class="note">Gordon College · College of Education, Arts and Sciences</p>
+<h2>Beyond the Quotation Marks</h2><p><b>An Interactive Workbook on Writing Dialogue</b></p>
+<table class="sc"><tr><th>Subject</th><td>Creative Writing</td></tr><tr><th>Target grade level</th><td>Grade 10 (Senior High School)</td></tr>
+<tr><th>Prepared by</th><td><ol style="margin:0">
+<li>Concepcion, Abigail, Mendoza</li><li>Angeles, Sandy, Balato</li><li>Ecolango, Julia Andrea, Marvilla</li><li>Hipolito, Mhel Anthony, Liong</li><li>Renion, Anally, Andrade</li><li>Udja, Janet Joyce Gaynor, Bello</li></ol></td></tr></table>
+<div class="ex idbox"><b>Student information</b><p class="note" style="margin:2px 0 0">Type your name and section first. Your progress will be shown under your name.</p><label for="stn">Full name</label><input type="text" id="stn" placeholder="Last name, First name" autocomplete="name" oninput="tag()"><label for="sts">Section</label><input type="text" id="sts" placeholder="e.g., 10 – Rizal" oninput="tag()"><p id="idmsg" class="fb no"></p></div>
+<button class="btn" onclick="begin()">Begin the lesson →</button></div></section>
+
+<section id="learn">
+<div class="card"><h2>Give your characters a voice</h2>
+<p>Imagine a story where nobody speaks. Conversations bring stories to life by showing readers who characters are, what they feel, and how they relate. Dialogue helps develop personalities, reveal information, and move the story forward.</p></div>
+<div class="card"><h3>Learning outcomes</h3><p>By the end of this lesson, you will be able to:</p><ul>
+<li>Identify the functions of dialogue in revealing personality, emotions, and plot.</li>
+<li>Apply correct punctuation, capitalization, and paragraph formatting, with varied tags and action beats.</li>
+<li>Compose an original dialogue scene of 60–100 words with distinct voices that moves a story forward (Browne &amp; King, 2004).</li></ul></div>
+<div class="card"><h3>What is dialogue?</h3><p>Dialogue is the written conversation between two or more characters in a story, play, or other literary work.</p>
+<div class="ex">“Are you ready for the competition?” Mia asked.
+“I think so, but I’m still nervous,” Jake replied.</div></div>
+<div class="card"><h3>Four purposes of dialogue</h3><div class="grid">
+<div class="ex"><b>A. Reveals personality</b><br>How a character speaks shows attitude and feelings.</div>
+<div class="ex"><b>B. Moves the story forward</b><br>Conversations introduce information, problems, and events.</div>
+<div class="ex"><b>C. Expresses emotions and relationships</b><br>Shows how characters feel about one another.</div>
+<div class="ex"><b>D. Makes stories engaging</b><br>Breaks up description and lets readers “see” the conversation.</div></div></div>
+<div class="card"><h3>Building blocks</h3>
+<p><b>Speaker</b> – the character saying the lines.</p>
+<p><b>Dialogue tag</b> – words that tell who is speaking: <span class="chip">said</span><span class="chip">asked</span><span class="chip">replied</span><span class="chip">whispered</span><span class="chip">shouted</span><span class="chip">explained</span><span class="chip">answered</span><span class="chip">exclaimed</span></p>
+<p><b>Action beat</b> – a description of movement, gesture, or expression while speaking.</p>
+<div class="ex">Tag: “Is that the blue one?” Mark asked.
+Beat: Mark looked around the classroom. “Is that the blue one?”</div></div>
+<div class="card"><h3>Punctuation &amp; formatting rules</h3><ol>
+<li>Use double quotation marks around the exact words spoken.</li>
+<li>Use a comma before the closing quote when a dialogue tag follows.</li>
+<li>Put question marks and exclamation points <b>inside</b> the quotation marks.</li>
+<li>Start a <b>new paragraph</b> every time a different character speaks.</li></ol></div>
+<div class="card"><h3>5 ways to make dialogue effective</h3><ul>
+<li>Make it sound natural and believable.</li><li>Give each character a unique voice.</li><li>Keep every line meaningful – it should have a purpose.</li><li>Avoid unnecessary, useless conversation.</li><li>Balance dialogue with actions and descriptions.</li></ul></div>
+<div class="card"><h3>Models and examples</h3>
+<p><b>Model 1 – Natural, realistic dialogue</b></p><div class="ex">“Did you finish the reading?” Mia asked.
+“Barely. I fell asleep halfway through,” Jake admitted.</div><p class="note">Why it works: contractions and everyday words sound like real speech, and Jake’s honest answer shows he is tired and relaxed.</p>
+<p><b>Model 2 – Dialogue tags and action beats</b></p><div class="ex">Mia tapped her pen on the desk. “Are we really doing this today?”</div><p class="note">Why it works: the action beat shows impatience without saying “she was impatient,” and it makes the speaker clear without a tag.</p>
+<p><b>Model 3 – Punctuation and formatting</b></p><div class="ex">“We’re late,” Jake said.
+“Then run!” Mia shouted.</div><p class="note">Why it works: a comma ends the first spoken line before the tag, the “!” stays inside the quotation marks, and each speaker gets a new line.</p>
+<p><b>Model 4 – Dialogue, action, and story development</b></p><div class="ex">Daniel stared at the empty doghouse. “Max?” he whispered.
+“The gate’s open,” Sophie said, already running.</div><p class="note">Why it works: the lines introduce a problem (a missing dog) and push the story into its next action.</p>
+<button class="btn" onclick="go('practice')">Start practicing →</button></div>
+</section>
+
+<section id="practice">
+<div class="card"><h2>Guided Practice 1: Natural &amp; realistic dialogue</h2><p>Choose the answer that best describes the character or situation.</p><div id="p1"></div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="nxt(this)">Next: Guided Practice 2 →</button></div></div>
+<div class="card"><h2>Guided Practice 2: Tags vs. action beats</h2><p>Is the <u>underlined</u> part a Dialogue Tag (DT) or an Action Beat (AB)?</p><div id="p2"></div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="nxt(this)">Next: Guided Practice 3 →</button></div></div>
+<div class="card"><h2>Guided Practice 3: Punctuation &amp; formatting</h2><p>Rewrite each sentence with correct dialogue punctuation, capitalization, and formatting.</p><div id="p3"></div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="nxt(this)">Next: Guided Practice 4 →</button></div></div>
+<div class="card"><h2>Guided Practice 4: Dialogue, action &amp; story</h2><p>Show how dialogue develops characters, emotions, and events.</p><div id="p4"></div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="go('write')">Next: Writing →</button></div></div>
+</section>
+
+<section id="write">
+<div class="card"><h2>Guided writing</h2><p>Situation: two classmates are preparing for an English presentation. Complete the dialogue.</p>
+<div class="line">Mia asked, “<input class="in" id="g1" type="text" aria-label="Mia’s question">?”<br>
+“<input class="in" id="g2" type="text" aria-label="Jake’s reply">,” Jake replied.<br>
+<input class="in" id="g3" type="text" style="min-width:80%" aria-label="Action beat" placeholder="An action beat for Jake">.<br>
+“<input class="in" id="g4" type="text" aria-label="Mia’s line">,” Mia said.<br>
+“<input class="in" id="g5" type="text" aria-label="Jake’s answer">,” Jake answered.</div>
+<button class="btn" onclick="gcheck()">Check if my dialogue makes sense</button><button class="btn alt" onclick="$('#gs').classList.toggle('hide')">Show / hide sample answer</button><div id="gk" class="hide"></div>
+<div id="gs" class="ex hide">Mia asked, “Are you ready for tomorrow’s presentation?”
+“I’m a little nervous, but I think I’m prepared,” Jake replied.
+Jake looked at his note cards and took a deep breath.
+“You’ve practiced a lot. You’ll do great,” Mia said.
+“Thanks. That makes me feel more confident,” Jake answered.</div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="nxt(this)">Next: Crafting dynamic dialogue →</button></div></div>
+
+<div class="card"><h2>Crafting dynamic dialogue</h2>
+<p>Write an original scene of <b>60–100 words</b> with two people in a tense or uncomfortable situation. <b>Do not tell readers how characters feel</b> – let dialogue, hidden meanings, and small actions show it.</p>
+<label for="sc"><b>Choose one scenario</b></label>
+<select id="sc"><option>1. Two students accidentally swap identical folders before a major presentation. One opens the bag and finds something unexpected.</option>
+<option>2. A teenager sneaks into the kitchen for a late-night snack and runs into a family member who is also awake.</option>
+<option>3. Two friends are alone in the living room when an expensive or sentimental item breaks, and they hear footsteps of someone older approaching the front door.</option></select>
+<ul><li>New indented paragraph each time a different character speaks.</li><li>All end punctuation goes inside the quotation marks.</li><li>Vary tags sparingly (muttered, interrupted, demanded) and balance them with action beats.</li><li>4–6 spoken lines.</li></ul>
+<textarea id="essay" placeholder="Start your scene here. Put each speaker on a new line."></textarea>
+<div class="stat" id="es"></div>
+<button class="btn" onclick="score()">Score my dialogue</button><button class="btn alt" onclick="chk()">Check punctuation only</button>
+<div id="ck" class="ex hide"></div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="nxt(this)">Next: Scoring rubric →</button></div></div>
+
+<div class="card"><h3>Scoring rubric (30 points) – scored automatically</h3>
+<table class="sc"><tr><th>Criterion</th><th>What is scored</th></tr>
+<tr><td><b>Character &amp; plot (10)</b></td><td>Number of spoken lines (3), two distinct speakers (2), varied line lengths (2), tension cues such as questions, exclamations, interruptions, or conflict words (2), and 60–100 words (1).</td></tr>
+<tr><td><b>Action beats &amp; pacing (10)</b></td><td>Two or more action beats between lines (4), two different dialogue tags (2), balance of beats and speech (2), and showing emotion instead of naming it (2).</td></tr>
+<tr><td><b>Punctuation &amp; layout (10)</b></td><td>Starts at 10; 2 points are deducted for each line with a quotation, punctuation, tag, or paragraph error.</td></tr></table>
+<p>Write your scene above, then press <b>Score my dialogue</b>.</p>
+<div id="rs" class="hide"></div><div class="stat"><span id="rt">Total: – / 30</span></div>
+<p class="note">This is an automated estimate based on your text. Your teacher’s final grade may differ.</p><div style="text-align:right;margin-top:10px"><button class="btn" onclick="go('reflect')">Next: Reflection →</button></div></div>
+</section>
+
+<section id="reflect">
+<div class="card"><h2>Reflection</h2><p>Answer each question in 3–5 sentences.</p>
+<p><b>1.</b> What is the most important thing you learned about writing dialogue? How can it help you write more effective stories?</p>
+<textarea class="rf" style="min-height:130px"></textarea><div class="stat rfs"></div>
+<p><b>2.</b> Which skill did you improve the most (natural dialogue, tags and action beats, punctuation, or developing a story)? Explain with an example from the activities or models.</p>
+<textarea class="rf" style="min-height:130px"></textarea><div class="stat rfs"></div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="go('test')">Next: Assessment →</button></div></div>
+</section>
+
+<section id="test"><div class="card"><h2>Assessment</h2><p>Choose the best answer. You get instant feedback.</p><div id="as"></div></div>
+<div class="card"><h3>Your results</h3><p id="rwho" class="note"></p><div id="sum" class="stat"></div><div style="text-align:right;margin-top:10px"><button class="btn" onclick="go('refs')">Next: References →</button></div></div></section>
+<section id="refs"><div class="card"><h2>References</h2>
+<div class="ref">Browne, R., &amp; King, D. (2004). <i>Self-editing for fiction writers: How to edit yourself into print</i> (2nd ed.). HarperCollins.</div>
+<div class="ref">Gardner, J. (1983). <i>The art of fiction: Notes on craft for young writers</i>. Alfred A. Knopf.</div>
+<div class="ref">Strunk, W., Jr., &amp; White, E. B. (2000). <i>The elements of style</i> (4th ed.). Longman.</div>
+<div class="ref">University of Chicago Press. (2017). <i>The Chicago manual of style</i> (17th ed.).</div>
+<div style="text-align:right;margin-top:10px"><button class="btn" onclick="go('done')">Finish →</button></div></div></section>
+<section id="done"><div class="card cover"><h2>🎉 Congratulations!</h2><p><b>You finished “Beyond the Quotation Marks.”</b></p><p>You can now make characters speak with distinct voices, use tags and action beats, punctuate dialogue correctly, and write a scene that moves a story forward.</p><div class="stat" id="fin" style="justify-content:center"></div><div id="rep"></div><div class="ex idbox" style="max-width:460px;margin:10px auto;text-align:center"><b>Save your scores</b><br><button class="btn" onclick="saveS()">💾 Save my scores (PDF)</button><p id="svmsg" class="fb"></p><p class="note" style="margin:0"><b>Reminder:</b> after saving, send the file to your teacher through your teacher’s email.</p></div><p id="finmsg"></p><p class="note">Keep listening to how people really talk, and keep writing. Every great story begins with a conversation.</p><button class="btn" onclick="go('learn')">Review the lesson</button><button class="btn alt" onclick="go('cover')">Back to cover</button></div></section>
+</main>
+<script>
+function nxt(b){const n=b.closest(".card").nextElementSibling;if(n)n.scrollIntoView({behavior:"smooth",block:"start"})}
+const $=s=>document.querySelector(s),S={};
+const tabs=[["cover","Cover"],["learn","Learn"],["practice","Practice"],["write","Write"],["reflect","Reflect"],["test","Assessment"],["refs","References"],["done","Finish"]];
+const stu=()=>({n:$("#stn").value.trim(),s:$("#sts").value.trim()});
+const esc=x=>x.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function tag(){const t=stu(),w=$("#who");const ok=t.n||t.s;w.classList.toggle("hide",!ok);w.textContent="Student: "+(t.n||"–")+" · Section: "+(t.s||"–");$("#rwho").textContent=t.n?"Progress for "+t.n+(t.s?" ("+t.s+")":""):"";if(t.n&&t.s)$("#idmsg").textContent=""}
+function begin(){const t=stu();if(!t.n||!t.s){$("#idmsg").textContent="Please type your full name and section first, so your progress is recorded under your name.";(!t.n?$("#stn"):$("#sts")).focus();return}go("learn")}
+function go(id){if(id!=="cover"&&!(stu().n&&stu().s)){id="cover";$("#idmsg").textContent="Please type your full name and section first, so your progress is recorded under your name."}
+document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===id));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===id));if(id==="done")fin();scrollTo(0,0)}
+tabs.forEach(([id,l])=>{const b=document.createElement("button");b.textContent=l;b.dataset.t=id;b.onclick=()=>go(id);$("#nav").append(b)});
+go("cover");
+function sum(){const o=[["P1","p1"],["P2","p2"],["P3","p3"],["P4","p4"],["Assessment","as"],["Writing task","w"]];$("#sum").innerHTML=o.map(([n,k])=>`<span class="${S[k].d?(S[k].r/S[k].n>=.7?"g":"b"):""}">${n}: ${S[k].r}/${S[k].n}</span>`).join("")}
+function quiz(id,items,plain){
+ const root=$("#"+id);S[id]={n:items.length,r:0,d:0};
+ const sc=document.createElement("div");sc.className="score";
+ const up=()=>{sc.textContent=`Score: ${S[id].r} / ${S[id].n}  ·  ${S[id].d} answered`;if(S[id].d===S[id].n){const rb=document.createElement("button");rb.className="btn alt";rb.style.cssText="margin:0 0 0 10px;padding:2px 12px";rb.textContent="Try again?";rb.onclick=()=>rs.slice().forEach(f=>f());sc.append(rb)}sum&&sum()};const rs=[];
+ items.forEach((it,i)=>{
+  const q=document.createElement("div");q.className="q";
+  q.innerHTML=(it.c?`<div class="ctx">${it.c}</div>`:"")+`<p><b>${i+1}.</b> ${it.q}</p>`;
+  const box=document.createElement("div");box.className="opts";const fb=document.createElement("div");fb.className="fb";
+  const bs=it.o.map((t,j)=>{const b=document.createElement("button");b.className="opt";b.textContent=(plain?"":"ABCD"[j]+". ")+t;
+   b.onclick=()=>{if(q.dataset.d)return;q.dataset.d=1;S[id].d++;const good=j===it.a;if(good){S[id].r++;q.dataset.ok=1}
+    b.classList.add(good?"ok":"no");fb.className="fb "+(good?"ok":"no");
+    fb.textContent=(good?"Correct! ":"Not quite. ")+(good&&it.w?it.w:"");if(!good){const t=document.createElement("button");t.className="btn alt";t.textContent="Try again?";t.onclick=()=>q.rst();fb.append(" ",t)}up()};box.append(b);return b});
+  q.append(box,fb);root.append(q);q.rst=()=>{if(!q.dataset.d)return;S[id].d--;if(q.dataset.ok)S[id].r--;delete q.dataset.d;delete q.dataset.ok;bs.forEach(x=>x.className="opt");fb.className="fb";fb.textContent="";up()};rs.push(q.rst)});
+ root.append(sc);up()}
+S.p1={n:0,r:0,d:0};S.p2={n:0,r:0,d:0};S.p3={n:3,r:0,d:0};S.p4={n:0,r:0,d:0};S.as={n:0,r:0,d:0};S.w={n:30,r:0,d:0};
+quiz("p1",[
+{c:"“Have you finished your presentation, Mia?” Jake asked.\n“Almost! I just need to practice my introduction.”",q:"What does Mia’s response tell us about her situation?",o:["She has not started her presentation.","She has completed most of her work but still needs practice.","She does not care about the presentation.","She wants Jake to do the work for her."],a:1},
+{c:"“You should practice with me. I can help you,” Jake offered.",q:"What does Jake’s statement reveal about his personality?",o:["He is selfish.","He is impatient.","He is supportive and helpful.","He is nervous."],a:2}]);
+quiz("p2",[
+{c:"“Have you seen my notebook?” <u>Anna asked worriedly.</u>",q:"Dialogue Tag or Action Beat?",o:["DT – Dialogue Tag","AB – Action Beat"],a:0,w:"It tells who is speaking and how."},
+{c:"<u>Mark looked around the classroom.</u> “Is that the blue one?”",q:"Dialogue Tag or Action Beat?",o:["DT – Dialogue Tag","AB – Action Beat"],a:1,w:"It shows what Mark is doing."},
+{c:"“Yes, that’s mine!” <u>Anna exclaimed.</u>",q:"Dialogue Tag or Action Beat?",o:["DT – Dialogue Tag","AB – Action Beat"],a:0,w:"“Exclaimed” is a speech verb naming the speaker."},
+{c:"<u>Mark picked up the notebook from the floor.</u> “I found it.”",q:"Dialogue Tag or Action Beat?",o:["DT – Dialogue Tag","AB – Action Beat"],a:1,w:"It describes a physical action."}],true);
+const p3=[["“What time should we meet tomorrow” Lisa asked","“What time should we meet tomorrow?” Lisa asked."],["“Let’s meet at eight in the morning” Carlo said","“Let’s meet at eight in the morning,” Carlo said."],["“We need enough time to finish our project”! Carlo exclaimed","“We need enough time to finish our project!” Carlo exclaimed."]];
+const nz=s=>s.replace(/[“”"]/g,'"').replace(/[’']/g,"'").replace(/\s+/g," ").trim().replace(/\.$/,"");
+p3.forEach(([w,a],i)=>{const q=document.createElement("div");q.className="q";
+ q.innerHTML=`<div class="ctx">${i+1}. ${w}</div>`;const inp=document.createElement("input");inp.type="text";inp.placeholder="Type the corrected sentence";
+ const fb=document.createElement("div");fb.className="fb";const b=document.createElement("button");b.className="btn";b.textContent="Check";let done=0,tried=0;
+ b.onclick=()=>{const ok=nz(inp.value)===nz(a);tried++;if(ok){fb.className="fb ok";fb.textContent="Correct!";if(!done){done=1;S.p3.r+=tried===1?1:0;S.p3.d++}}
+  else{fb.className="fb no";fb.textContent=tried>1?"Answer: "+a+" ":"Not yet. Check the comma or end mark inside the quotes and the capital letters. ";if(tried>1&&!done){done=1;S.p3.d++}const t=document.createElement("button");t.className="btn alt";t.textContent="Try again?";t.onclick=()=>{inp.value="";fb.textContent="";fb.className="fb";if(done){S.p3.d--;done=0}$("#p3sc").textContent=`Score: ${S.p3.r} / 3 (first-try correct) · ${S.p3.d} finished`;sum();inp.focus()};fb.append(t)}
+  $("#p3sc").textContent=`Score: ${S.p3.r} / 3 (first-try correct) · ${S.p3.d} finished`;sum()};
+ q.append(inp,b,fb);$("#p3").append(q)});
+{const d=document.createElement("div");d.className="score";d.id="p3sc";d.textContent="Score: 0 / 3 (first-try correct) · 0 finished";$("#p3").append(d)}
+quiz("p4",[
+{c:"“Where’s Max?” Daniel asked as he opened the back gate.\n“I thought he was with you!” Sophie said.",q:"What problem is introduced in the conversation?",o:["Daniel lost his homework.","Sophie cannot find her torch.","Max, their dog, is missing.","The gate is broken."],a:2},
+{c:"Daniel shook his head. “The gate’s open. He’s escaped.”",q:"How does this line help develop the story?",o:["It introduces the cause of the problem.","It ends the story.","It changes the setting.","It introduces a new character."],a:0},
+{c:"“We’ve got to find him before it gets dark,” Sophie said, snatching up her torch.",q:"Which part is the action beat?",o:["We’ve got to find him before it gets dark","Sophie said","snatching up her torch","before it gets dark"],a:2}]);
+quiz("as",[
+{q:"What is dialogue in creative writing?",o:["A description of a story’s setting","A written conversation between two or more characters","A summary of the events in a story","A narrator’s explanation of a character’s actions"],a:1},
+{q:"Which purpose of dialogue is demonstrated when a character’s words reveal that they are confident and determined?",o:["Moving the story forward","Making stories more engaging","Revealing character personality","Introducing the setting"],a:2},
+{c:"“I found a mysterious letter inside the library,” Ella whispered.",q:"What is the main purpose of this dialogue?",o:["It introduces information that may develop the story.","It explains the physical appearance of Ella.","It describes the setting in detail.","It concludes the conflict."],a:0},
+{q:"What do you call the character who says the words in a conversation?",o:["Narrator","Speaker","Reader","Audience"],a:1},
+{q:"Which of the following is an example of an action beat?",o:["“I will help you,” Mark said.","“Are you ready?” Anna asked.","Mark looked down at his notebook.","“Thank you!” Mia exclaimed."],a:2},
+{q:"Which sentence correctly uses a dialogue tag after a spoken statement?",o:["“I finished my assignment” Mark said.","“I finished my assignment,” Mark said.","“I finished my assignment.” Mark said.","“I finished my assignment”, Mark said."],a:1},
+{q:"Which sentence correctly punctuates a character’s question?",o:["“Where are you going”, Lisa asked?","“Where are you going?” Lisa asked.","“Where are you going”? Lisa asked.","“Where are you going.” Lisa asked."],a:1},
+{q:"Why should writers begin a new paragraph whenever a different character speaks?",o:["To make the dialogue longer","To introduce a new setting","To make it easier to identify who is speaking","To remove the need for dialogue tags"],a:2},
+{q:"Which practice makes dialogue more effective and realistic?",o:["Giving every character the same way of speaking","Including unnecessary conversations","Using dialogue only to describe the setting","Giving characters distinct voices and meaningful exchanges"],a:3},
+{c:"“Where is my notebook?” Anna asked.\nMark searched under the desk. “Is this the one you’re looking for?”",q:"Which statement best explains the role of “Mark searched under the desk”?",o:["It serves as a dialogue tag.","It is an action beat that shows what Mark is doing.","It introduces a new speaker.","It summarizes the entire conversation."],a:1}]);
+sum();
+
+function gcheck(){
+ const v=[1,2,3,4,5].map(i=>$("#g"+i).value.trim()),el=$("#gk"),rows=[];el.classList.remove("hide");
+ const lbl=["Mia’s question","Jake’s reply","Action beat for Jake","Mia’s line","Jake’s answer"];
+ if(v.some(x=>!x)){el.innerHTML="<p class='fb no'>Fill in all five blanks first: "+lbl.filter((l,i)=>!v[i]).join(", ")+".</p>";return}
+ const W=x=>x.toLowerCase().match(/[a-z’']+/g)||[],topic=/presentation|present|practice|ready|prepared|nervous|slides?|notes?|cards?|speech|class|confident|help|tomorrow|english|group|report|rehears|talk|teacher|grade|worried|scared|anxious|deep breath|sure|think|know/i;
+ const qs=/^(are|is|do|does|did|can|could|will|would|should|have|has|what|when|where|who|why|how|which|were|was|shall)\b/i;
+ const add=(i,ok,msg)=>rows.push(`<tr><td>${lbl[i]}</td><td>${ok?"✓":"✗"} ${msg}</td></tr>`);
+ add(0,qs.test(v[0])&&W(v[0]).length>=3,qs.test(v[0])&&W(v[0]).length>=3?"Reads like a real question.":"Start with a question word (Are, Do, What, How…) and use at least 3 words.");
+ const rel=v[1].length&&W(v[1]).length>=3&&nz(v[1])!==nz(v[0]);
+ add(1,rel&&(topic.test(v[1])||topic.test(v[0])),rel?(topic.test(v[1])?"Answers Mia and stays on the topic.":"Does Jake’s reply connect to Mia’s question? Mention the presentation or how he feels."):"Write at least 3 words that answer Mia’s question, not repeat it.");
+ const beat=W(v[2]).length>=3&&/\b(he|his|jake)\b/i.test(v[2])&&!/[“”"]/.test(v[2]);
+ add(2,beat,beat?"A clear action Jake does.":"Describe something Jake does (3+ words, using Jake or he/his), with no quotation marks.");
+ add(3,W(v[3]).length>=3&&topic.test(v[3]+v[1]+v[0]),W(v[3]).length>=3&&topic.test(v[3]+v[1]+v[0])?"Mia’s line follows the conversation.":"Make Mia’s line respond to Jake’s feelings or the presentation (3+ words).");
+ add(4,W(v[4]).length>=3&&nz(v[4])!==nz(v[3]),W(v[4]).length>=3&&nz(v[4])!==nz(v[3])?"Jake answers Mia and closes the exchange.":"Jake should answer Mia’s last line in 3+ words, without repeating it.");
+ const bad=v.map((x,i)=>i!==2&&/^[a-z]/.test(x)?lbl[i]+" should start with a capital letter":/[“”"]/.test(x)?lbl[i]+" shouldn’t contain quotation marks (they’re already there)":i===0&&/\?$/.test(x)?"Remove the ? from Mia’s question – it’s added for you":i!==0&&i!==2&&/[,.!?]$/.test(x)&&i!==1&&i!==3&&i!==4?"":(i===1||i===3||i===4)&&/[,.]$/.test(x)?lbl[i]+" shouldn’t end with a comma or period – it’s added for you":i===2&&/^[a-z]/.test(x)?lbl[i]+" should start with a capital letter":"").filter(Boolean);
+ if(/^[a-z]/.test(v[2]))bad.push("Action beat should start with a capital letter");
+ add(0,!bad.length,bad.length?bad.join("; ")+".":"Capitals and punctuation look right.");
+ rows[rows.length-1]=rows[rows.length-1].replace(lbl[0],"Format");
+ const okc=rows.filter(r=>r.includes("✓")).length;
+ el.innerHTML=`<table class="sc"><tr><th>Part</th><th>Feedback</th></tr>${rows.join("")}</table><p class="fb ${okc===6?"ok":"no"}">${okc===6?"Your dialogue flows and makes sense. Nice work!":okc+" of 6 checks passed – fix the ✗ items and check again."}</p><p class="note">This is a quick automated check. Read your dialogue aloud and compare it with the sample answer.</p>`}
+function rep(){const t=stu(),d=new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"}),r=(a,b)=>`<tr><th>${a}</th><td>${b}</td></tr>`,pr=(k)=>`${S[k].r} / ${S[k].n}`+(S[k].d<S[k].n?" (not finished)":"");
+ $("#rep").innerHTML=`<table class="sc" style="max-width:420px;margin:12px auto">${r("Name",esc(t.n))}${r("Section",esc(t.s))}${r("Date",d)}${r("Guided Practice 1",pr("p1"))}${r("Guided Practice 2",pr("p2"))}${r("Guided Practice 3",S.p3.r+" / 3"+(S.p3.d<3?" (not finished)":""))}${r("Guided Practice 4",pr("p4"))}${r("Assessment",pr("as"))}${r("Dialogue scene",S.w.d?S.w.r+" / 30":"not scored yet")}</table>`}
+function rtext(){const t=stu(),d=new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"}),pr=k=>`${S[k].r}/${S[k].n}`+(S[k].d<S[k].n?" (not finished)":"");
+ return ["Beyond the Quotation Marks – Progress Report","","Name: "+t.n,"Section: "+t.s,"Date: "+d,"","Guided Practice 1: "+pr("p1"),"Guided Practice 2: "+pr("p2"),"Guided Practice 3: "+S.p3.r+"/3"+(S.p3.d<3?" (not finished)":""),"Guided Practice 4: "+pr("p4"),"Assessment: "+pr("as"),"Dialogue scene: "+(S.w.d?S.w.r+"/30":"not scored yet"),"","Dialogue scene text:",$("#essay").value.trim()||"(none)"].join("\n")}
+function mkPdf(){const t=stu(),d=new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"}),M={"’":146,"‘":145,"“":147,"”":148,"–":150,"—":151,"…":133,"•":149};
+ const enc=x=>{let o="";for(const ch of x){const c=ch.charCodeAt(0);o+=String.fromCharCode(M[ch]!==undefined?M[ch]:c<256?c:63)}return o.replace(/([\\()])/g,"\\$1")};
+ const pages=[];let ops="",y=740;const np=()=>{pages.push(ops);ops="";y=740};
+ const need=h=>{if(y-h<60)np()};
+ const row=(a,b)=>{need(20);ops+=`BT /F2 11 Tf 72 ${y} Td (${enc(a)}) Tj ET\nBT /F1 11 Tf 250 ${y} Td (${enc(b)}) Tj ET\n0.8 w 72 ${y-5} m 540 ${y-5} l S\n`;y-=20};
+ const line=(x,f,z,l)=>{need(z*1.5);ops+=`BT /${f} ${z} Tf ${l} ${y} Td (${enc(x)}) Tj ET\n`;y-=z*1.5};
+ const wrap=(x,n)=>{const o=[];x.split("\n").forEach(p=>{let c="";p.split(/\s+/).forEach(w=>{if((c+" "+w).trim().length>n&&c){o.push(c);c=w}else c=(c+" "+w).trim()});o.push(c)});return o};
+ const pr=k=>`${S[k].r} / ${S[k].n}`+(S[k].d<S[k].n?"  (not finished)":"");
+ line("Beyond the Quotation Marks","F2",20,72);line("Student Progress Report","F1",13,72);y-=10;
+ row("Name",t.n);row("Section",t.s);row("Date",d);y-=8;
+ row("Guided Practice 1",pr("p1"));row("Guided Practice 2",pr("p2"));row("Guided Practice 3",S.p3.r+" / 3"+(S.p3.d<3?"  (not finished)":""));row("Guided Practice 4",pr("p4"));row("Assessment",pr("as"));row("Dialogue scene",S.w.d?S.w.r+" / 30":"not scored yet");
+ y-=14;line("Dialogue scene (student’s writing)","F2",12,72);y-=2;
+ wrap($("#essay").value.trim()||"(none)",88).forEach(l=>line(l,"F1",11,72));
+ pages.push(ops);
+ let out="%PDF-1.4\n";const off=[],add=x=>{off.push(out.length);out+=x},n=pages.length;
+ add("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+ add(`2 0 obj\n<< /Type /Pages /Count ${n} /Kids [${pages.map((_,i)=>(5+2*i)+" 0 R").join(" ")}] >>\nendobj\n`);
+ add("3 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>\nendobj\n");
+ add("4 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>\nendobj\n");
+ pages.forEach((c,i)=>{add(`${5+2*i} 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents ${6+2*i} 0 R >>\nendobj\n`);add(`${6+2*i} 0 obj\n<< /Length ${c.length} >>\nstream\n${c}endstream\nendobj\n`)});
+ const xr=out.length;out+=`xref\n0 ${off.length+1}\n0000000000 65535 f \n`+off.map(o=>String(o).padStart(10,"0")+" 00000 n \n").join("")+`trailer\n<< /Size ${off.length+1} /Root 1 0 R >>\nstartxref\n${xr}\n%%EOF`;
+ return new Blob([Uint8Array.from(out,c=>c.charCodeAt(0))],{type:"application/pdf"})}
+function saveS(){const m=$("#svmsg"),t=stu();
+ try{const f=(t.n||"student").replace(/[^A-Za-z0-9]+/g,"_").replace(/^_|_$/g,"")+"_Quotation_Marks_Scores.pdf",u=URL.createObjectURL(mkPdf()),l=document.createElement("a");l.href=u;l.download=f;document.body.append(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);
+ m.className="fb ok";m.textContent="Saved as "+f+". Don’t forget to send it to your teacher’s email!"}
+ catch(e){m.className="fb no";m.textContent="Couldn’t save the PDF. Take a screenshot of your report above and send that to your teacher’s email instead."}}
+function fin(){rep();const o=[["Practice","p1"],["Practice","p2"],["Practice","p3"],["Practice","p4"]],pr=o.reduce((a,[,k])=>[a[0]+S[k].r,a[1]+S[k].n],[0,0]);
+ $("#fin").innerHTML=`<span>Guided practice: ${pr[0]}/${pr[1]}</span><span>Assessment: ${S.as.r}/${S.as.n}</span><span>Dialogue scene: ${S.w.d?S.w.r+"/30":"not scored yet"}</span>`;
+ const done=S.as.d===S.as.n&&S.w.d;$("#finmsg").textContent=done?"Great job completing every part. Well done, writer!":"Tip: finish the Assessment and score your dialogue scene to see your full results here."}
+// writing tools
+const wc=t=>(t.trim().match(/\S+/g)||[]).length;
+const paras=t=>t.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+const curl=t=>{let o=false;return t.replace(/"/g,()=>(o=!o)?"“":"”")};
+function est(){const t=$("#essay").value,w=wc(t),ex=paras(t).filter(p=>/["“”]/.test(p)).length;
+ $("#es").innerHTML=`<span class="${w>=60&&w<=100?"g":"b"}">${w} words (60–100)</span><span class="${ex>=4&&ex<=6?"g":"b"}">${ex} spoken lines (4–6)</span>`}
+$("#essay").oninput=est;est();
+const TV="said|asked|replied|whispered|shouted|muttered|interrupted|demanded|exclaimed|answered|explained|murmured|snapped|sighed|stammered|cried|called|groaned|admitted|insisted|mumbled|blurted|gasped|laughed|added|yelled|pleaded|warned";
+const PRON=["He","She","They","It","We","I","You"];
+function issues(){const out=[];paras($("#essay").value).forEach((p,i)=>{const c=curl(p),n="Line "+(i+1)+": ";
+ if((c.match(/“/g)||[]).length!==(c.match(/”/g)||[]).length)out.push(n+"quotation marks don’t match up.");
+ if(/”[,.?!]/.test(c))out.push(n+"punctuation should go inside the closing quote, not after it.");
+ if(/[A-Za-z]”/.test(c))out.push(n+"spoken words need a comma, ?, ! or . before the closing quote.");
+ if(new RegExp("\\.”\\s+(?:[A-Z][a-z]+|he|she)\\s+(?:"+TV+")\\b").test(c))out.push(n+"use a comma, not a period, before a dialogue tag.");
+ const nm=new Set([...c.matchAll(new RegExp("\\b([A-Z][a-z]+)\\s+(?:"+TV+")\\b","g"))].map(m=>m[1]).filter(x=>!PRON.includes(x)));
+ if(nm.size>1)out.push(n+"more than one speaker is in this paragraph – start a new line when someone else speaks.")});
+ return [...new Set(out)]}
+function chk(){const o=issues(),el=$("#ck");el.classList.remove("hide");el.textContent=o.length?o.join("\n"):"No punctuation problems found by this quick check. Still read it aloud and check every line yourself."}
+function score(){const t=$("#essay").value,ps=paras(t).map(curl),w=wc(t),tips=[];
+ const dl=ps.filter(p=>/[“”]/.test(p)),lines=dl.length,sp=ps.flatMap(p=>[...p.matchAll(/“([^”]*)”/g)].map(m=>m[1]));
+ const el=$("#rs");el.classList.remove("hide");
+ if(!lines){el.innerHTML="<p class='fb no'>Write your dialogue first. Put each speaker on a new line, with the spoken words inside quotation marks.</p>";S.w.r=0;S.w.d=0;$("#rt").textContent="Total: – / 30";sum();return}
+ const names=new Set(),verbs=new Set();
+ ps.forEach(p=>{for(const m of p.matchAll(new RegExp("\\b([A-Z][a-z]+)\\s+("+TV+")\\b","g")))if(!PRON.includes(m[1])){names.add(m[1]);verbs.add(m[2])}
+  for(const m of p.matchAll(new RegExp("\\b("+TV+")\\s+([A-Z][a-z]+)\\b","g"))){names.add(m[2]);verbs.add(m[1])}
+  for(const m of p.matchAll(new RegExp("\\b(?:he|she|they)\\s+("+TV+")\\b","gi")))verbs.add(m[1].toLowerCase())});
+ let beats=0,tells=false;
+ ps.forEach(p=>{const nr=p.replace(/“[^”]*”/g," ").replace(new RegExp("\\b[A-Z][a-z]+\\s+(?:"+TV+")\\b(\\s+\\w+ly)?|\\b(?:he|she|they)\\s+(?:"+TV+")\\b(\\s+\\w+ly)?|\\b(?:"+TV+")\\s+[A-Z][a-z]+\\b","gi")," ");
+  if(wc(nr.replace(/[^\w\s’']/g," "))>=3)beats++;
+  if(/\b(felt|feeling|was|were|is|looked)\s+(very\s+|so\s+)?(angry|sad|nervous|scared|happy|upset|embarrassed|afraid|anxious|worried|guilty|mad|furious|excited|shy|jealous)\b/i.test(nr))tells=true});
+ // Character & plot
+ let a1=lines>=4?3:lines>=3?2:1,a2=names.size>=2?2:lines>=2?1:0;
+ const wl=sp.map(wc),var_=Math.min(...wl)<=4&&Math.max(...wl)>=7?2:(Math.max(...wl)-Math.min(...wl)>=3?1:0);
+ const joined=sp.join(" ");const cues=[/\?/.test(joined),/!/.test(joined),/—|…|\.\.\./.test(t),/\b(no|don’t|don't|can’t|can't|won’t|won't|stop|sorry|why|what|please|wait|hide|quick|promise|secret|hurry)\b/i.test(joined)].filter(Boolean).length;
+ const a4=cues>=3?2:cues>=1?1:0,a5=w>=60&&w<=100?1:0,cp=a1+a2+var_+a4+a5;
+ if(a1<3)tips.push("Add more spoken lines (aim for 4–6).");
+ if(a2<2)tips.push("Name both speakers in tags or beats so readers know who is talking.");
+ if(var_<2)tips.push("Mix short and long lines so each voice sounds different.");
+ if(a4<2)tips.push("Add tension: a question, an interruption (—), or a worried or defensive line.");
+ if(!a5)tips.push("Your scene has "+w+" words; the target is 60–100.");
+ // Beats
+ const b1=beats>=2?4:beats===1?2:0,b2=verbs.size>=2?2:verbs.size===1?1:0,b3=beats>=Math.ceil(lines*.25)?2:0,b4=tells?0:2,ab=b1+b2+b3+b4;
+ if(b1<4)tips.push("Add more action beats (gestures or movements) between the lines.");
+ if(b2<2)tips.push("Use at least two different tags (muttered, interrupted, demanded) instead of repeating said.");
+ if(!b3)tips.push("Balance speech with action: about one beat for every four lines.");
+ if(tells)tips.push("Show emotion through actions instead of naming it (for example, avoid “was nervous”).");
+ // Punctuation
+ const is=issues(),pu=Math.max(0,10-2*is.length);
+ is.forEach(x=>tips.push(x));
+ const tot=cp+ab+pu,lv=tot>=27?"Excellent":tot>=21?"Proficient":tot>=15?"Developing":"Beginning";
+ S.w.r=tot;S.w.d=1;
+ el.innerHTML=`<table class="sc"><tr><th>Criterion</th><th>Score</th></tr><tr><td>Character &amp; plot</td><td>${cp} / 10</td></tr><tr><td>Action beats &amp; pacing</td><td>${ab} / 10</td></tr><tr><td>Punctuation &amp; layout</td><td>${pu} / 10</td></tr><tr><th>Total</th><th>${tot} / 30 – ${lv}</th></tr></table>`+(tips.length?`<p><b>To improve:</b></p><ul>${tips.map(x=>`<li>${x.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</li>`).join("")}</ul>`:"<p class='fb ok'>Great work! No improvements flagged.</p>");
+ $("#rt").textContent="Total: "+tot+" / 30 ("+lv+")";sum()}
+document.querySelectorAll(".rf").forEach((t,i)=>t.oninput=()=>{const n=(t.value.match(/[^.!?]+[.!?]+/g)||[]).length;const el=document.querySelectorAll(".rfs")[i];el.innerHTML=`<span class="${n>=3&&n<=5?"g":"b"}">${n} sentences (3–5)</span>`});
+</script></body></html>
